@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laudo de Readaptação Funcional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f0f4f8;
+    --surface: #ffffff;
+    --surface2: #f8fafc;
+    --border: #e2e8f0;
+    --border-light: #edf2f7;
+    --accent: #2d6a4f;
+    --accent-hover: #1b4332;
+    --accent-light: #d8f3dc;
+    --accent-light2: #eaf6ee;
+    --accent2: #c0392b;
+    --accent2-light: #fdecea;
+    --blue: #2563a8;
+    --blue-light: #dbeafe;
+    --amber: #92650a;
+    --amber-light: #fef3c7;
+    --teal: #0e7490;
+    --teal-light: #cffafe;
+    --text: #1a202c;
+    --text-muted: #64748b;
+    --text-light: #a0aec0;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.10);
+    --radius: 12px;
+    --radius-sm: 7px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 0 0 72px;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #162d4a 100%);
+    color: #fff;
+    padding: 22px 40px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 2px 20px rgba(20,40,70,0.30);
+  }
+  header .logo {
+    width: 48px; height: 48px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.18);
+  }
+  header h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+  header .header-sub {
+    font-size: 0.77rem;
+    opacity: 0.72;
+    margin-top: 3px;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* INSTRUCAO BAR */
+  .instrucao-bar {
+    background: #dbeafe;
+    border-bottom: 1px solid #bfdbfe;
+    color: #1e3a5f;
+    padding: 10px 40px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    letter-spacing: 0.01em;
+  }
+  @media (max-width: 1000px) { .instrucao-bar { padding: 10px 20px; } }
+
+  /* LAYOUT */
+  .container {
+    max-width: 1400px;
+    margin: 28px auto 0;
+    padding: 0 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+
+  @media (max-width: 1000px) {
+    .container { grid-template-columns: 1fr; }
+    header { padding: 18px 20px; }
+  }
+
+  /* PANELS */
+  .panel {
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .panel-header {
+    padding: 13px 20px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .panel-header .step-badge {
+    background: rgba(255,255,255,0.22);
+    border-radius: 50%;
+    width: 22px; height: 22px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+  .panel-header.green { background: linear-gradient(90deg, var(--accent) 0%, #40916c 100%); color: #fff; }
+  .panel-header.blue  { background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%); color: #fff; }
+  .panel-header.amber { background: linear-gradient(90deg, #92400e 0%, #b45309 100%); color: #fff; }
+  .panel-header.teal  { background: linear-gradient(90deg, #0e7490 0%, #0891b2 100%); color: #fff; }
+  .panel-header small { opacity: 0.72; font-size: 0.68rem; font-weight: 400; text-transform: none; letter-spacing: 0; margin-left: 2px; }
+
+  .panel-body { padding: 18px 20px 22px; }
+
+  /* SECTION GROUPS */
+  .section-group { margin-bottom: 18px; }
+  .section-group:last-child { margin-bottom: 0; }
+  .section-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent);
+    padding-bottom: 7px;
+    margin-bottom: 8px;
+    border-bottom: 2px solid var(--accent-light);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+  @media (max-width: 700px) { .cols-2 { grid-template-columns: 1fr; } }
+
+  /* CHECKBOXES */
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 5px 8px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background 0.1s;
+    margin-bottom: 1px;
+  }
+  .check-item:hover { background: var(--surface2); }
+  .check-item.checked { background: var(--accent-light2); }
+
+  .check-item input[type="checkbox"] { display: none; }
+  .check-box {
+    width: 16px; height: 16px; min-width: 16px;
+    border: 1.8px solid var(--border);
+    border-radius: 4px;
+    margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.12s;
+    background: #fff;
+  }
+  .check-item.checked .check-box {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 1px 4px rgba(45,106,79,0.3);
+  }
+  .check-box svg { display: none; }
+  .check-item.checked .check-box svg { display: block; }
+  .check-label {
+    font-size: 0.79rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    user-select: none;
+  }
+  .check-item.checked .check-label { color: var(--accent); font-weight: 500; }
+
+  /* RADIO */
+  .radio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .radio-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 13px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.12s;
+    background: var(--surface2);
+  }
+  .radio-item:hover { border-color: var(--accent); background: var(--accent-light2); }
+  .radio-item.selected {
+    border-color: var(--accent);
+    background: var(--accent-light2);
+    box-shadow: 0 0 0 3px rgba(45,106,79,0.1);
+  }
+  .radio-item input { display: none; }
+  .radio-dot {
+    width: 16px; height: 16px; min-width: 16px;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.12s;
+  }
+  .radio-item.selected .radio-dot { border-color: var(--accent); }
+  .radio-dot-inner {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.12s;
+    transform: scale(0.8);
+  }
+  .radio-item.selected .radio-dot-inner { opacity: 1; transform: scale(1); }
+  .radio-label {
+    font-size: 0.81rem;
+    font-weight: 500;
+    color: var(--text);
+    user-select: none;
+  }
+  .radio-item.selected .radio-label { color: var(--accent); }
+
+  .notice {
+    font-size: 0.72rem;
+    color: var(--amber);
+    margin-top: 12px;
+    padding: 9px 12px;
+    background: var(--amber-light);
+    border-left: 3px solid #d97706;
+    border-radius: 0 6px 6px 0;
+    font-weight: 500;
+  }
+
+  /* DIVIDER */
+  .separator {
+    border: none;
+    border-top: 2px dashed #b0bec5;
+    margin: 10px 0;
+  }
+
+  /* OUTPUT PANEL */
+  .output-panel {
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .output-header {
+    background: linear-gradient(90deg, #0e7490 0%, #0891b2 100%);
+    color: #fff;
+    padding: 13px 20px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .output-header .header-left { display: flex; align-items: center; gap: 10px; }
+
+  .output-body { padding: 20px 22px; }
+
+  .text-result {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.79rem;
+    line-height: 1.85;
+    color: var(--text);
+    min-height: 110px;
+    background: var(--surface2);
+    border: 1.5px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 18px 20px;
+    white-space: pre-wrap;
+  }
+  .text-result.empty {
+    color: var(--text-light);
+    font-style: italic;
+    font-size: 0.86rem;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* BUTTONS */
+  .btn-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 18px;
+    border-radius: var(--radius-sm);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.81rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+    letter-spacing: 0.01em;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(45,106,79,0.25);
+  }
+  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(45,106,79,0.3); }
+  .btn-secondary {
+    background: #fff;
+    color: var(--text-muted);
+    border: 1.5px solid var(--border);
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light2); }
+  .btn-danger {
+    background: #fff;
+    color: var(--accent2);
+    border: 1.5px solid #fecaca;
+  }
+  .btn-danger:hover { background: var(--accent2-light); border-color: var(--accent2); }
+
+  /* COPY FEEDBACK */
+  .copy-feedback {
+    display: none;
+    font-size: 0.74rem;
+    color: var(--accent);
+    margin-top: 8px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .copy-feedback.show { display: block; }
+
+  /* GENERATE BUTTON */
+  .generate-btn {
+    background: linear-gradient(135deg, var(--accent) 0%, #40916c 100%);
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: var(--radius-sm);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.02em;
+    transition: all 0.15s;
+    box-shadow: 0 4px 16px rgba(45,106,79,0.25);
+  }
+  .generate-btn:hover { background: linear-gradient(135deg, var(--accent-hover) 0%, var(--accent) 100%); transform: translateY(-1px); box-shadow: 0 6px 22px rgba(45,106,79,0.32); }
+
+  .clear-btn {
+    background: #fff;
+    color: var(--accent2);
+    border: 1.5px solid #fecaca;
+    padding: 10px 22px;
+    border-radius: var(--radius-sm);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.84rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.15s;
+  }
+  .clear-btn:hover { background: var(--accent2-light); border-color: var(--accent2); }
+
+  /* HIGHLIGHTS in text */
+  .text-restrict { color: var(--accent2); font-weight: 600; }
+  .text-period { color: var(--accent); font-weight: 600; }
+  .text-recom { color: #1e40af; font-weight: 600; }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">⚕️</div>
+  <div>
+    <h1>Laudo de Readaptação Funcional</h1>
+    <p class="header-sub">Coordenadoria de Gestão de Saúde do Servidor – COGESS</p>
+  </div>
+</header>
+
+<div class="instrucao-bar">
+  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" style="flex-shrink:0;opacity:0.7"><circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 5v4M7.5 10.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  Selecione as restrições, recomendações e periodicidade para gerar o texto do laudo.
+</div>
+
+<div class="container">
+
+  <!-- COLUNA 1: RESTRIÇÕES -->
+  <div class="panel">
+    <div class="panel-header green">
+      <div class="step-badge">1</div>
+      Selecione as RESTRIÇÕES <small>(obrigatório)</small>
+    </div>
+    <div class="panel-body">
+
+      <div class="cols-2">
+        <!-- COLUNA A -->
+        <div>
+          <div class="section-group">
+            <div class="section-title">Osteomuscular, Neurológico e Cardiovascular</div>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="permanência prolongada na posição sentada (aproximadamente mais de 30 minutos consecutivos)">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Permanência prolongada na posição sentada (aproximadamente mais de 30 minutos consecutivos).</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="permanência prolongada em pé (aproximadamente mais de 30 minutos consecutivos)">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Permanência prolongada em pé (aproximadamente mais de 30 minutos consecutivos).</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="caminhar com frequência (aproximadamente mais de 30 minutos consecutivos)">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Caminhar com frequência (aproximadamente mais de 30 minutos consecutivos).</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="caminhar longas distâncias (aproximadamente mais de 1km)">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Caminhar longas distâncias (aproximadamente mais de 1km).</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="levantamento, carga e descarga de materiais com peso aproximadamente superior a 5kg (não inclui o uso de EPIs)">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Levantamento, carga e descarga de materiais aproximadamente mais pesados do que 5kg (não inclui o uso de EPIs).</span>
+            </label>
+            <hr class="separator">
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="permanência prolongada na posição sentada">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Permanência prolongada na posição sentada.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="permanência prolongada em pé">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Permanência prolongada em pé.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="caminhar com frequência">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Caminhar com frequência.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="caminhar longas distâncias">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Caminhar longas distâncias.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="levantamento e transporte de materiais">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Levantamento e transporte de materiais.</span>
+            </label>
+            <hr class="separator">
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="uso constante de escadas">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Uso constante de escadas.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="movimento de agachamento">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Movimento de agachamento.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="destreza manual">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Destreza manual.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="esforços físicos intensos">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Esforços físicos intensos.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="movimentos repetitivos com os membros inferiores">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Movimentos repetitivos com os membros inferiores.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="movimentos repetitivos com os membros superiores">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Movimentos repetitivos com os membros superiores.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="movimentos repetitivos com o membro superior direito">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Movimentos repetitivos com o membro superior direito.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="movimentos repetitivos com o membro superior esquerdo">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Movimentos repetitivos com o membro superior esquerdo.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="movimentos de torção com os membros superiores">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Movimentos de torção com os membros superiores.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="movimentos contínuo ou repetitivo com o braço acima da linha do ombro (aproximadamente 90° graus de flexão e/ou abdução)">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Movimentos contínuo ou repetitivo com o braço acima da linha do ombro (aproximadamente 90° graus de flexão e/ou abdução).</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="movimentos repetitivos com a coluna vertebral">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Movimentos repetitivos com a coluna vertebral.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="manutenção forçada de posturas viciosas da coluna">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Manutenção forçada de posturas viciosas da coluna.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="flexão frequente da coluna vertebral">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Flexão frequente da coluna vertebral.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="rotação e inclinação repetitiva da coluna vertebral">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Rotação e inclinação repetitiva da coluna vertebral.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="condução de veículos automotores funcionais">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Condução de veículos automotores funcionais.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="atividades que ofereçam risco para si e/ou para terceiros">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Atividades que ofereçam risco para si e/ou para terceiros.</span>
+            </label>
+          </div>
+
+          <div class="section-group">
+            <div class="section-title">Dermatológico</div>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="uso frequente e obrigatório de produtos químicos e alérgenos">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Uso frequente e obrigatório de produtos químicos e alérgenos.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="lavagem constante das mãos">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Lavagem constante das mãos.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="exposição frequente ao sol">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Exposição frequente ao sol.</span>
+            </label>
+          </div>
+
+                  </div>
+
+        <!-- COLUNA B -->
+        <div>
+
+<div class="section-group">
+            <div class="section-title">Saúde Mental</div>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="enfrentamento e mediação constante de conflitos">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Enfrentamento e mediação constante de conflitos.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="estados elevados e rotineiros de estresse">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Estados elevados e rotineiros de estresse.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="estado de atenção e vigilância permanentes">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Estado de atenção e vigilância permanentes.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="contato direto e prolongado com o público em geral">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Contato direto e prolongado com o público em geral.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="contato direto e prolongado com o público infanto-juvenil">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Contato direto e prolongado com o público infanto-juvenil.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="constante pressão e carga intensa de trabalho">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Constante pressão e carga intensa de trabalho.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="alto grau de responsabilidade e de capacidade decisória">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Alto grau de responsabilidade e de capacidade decisória.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="atendimento assistencial em saúde (SMS)">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Atendimento assistencial em saúde (SMS).</span>
+            </label>
+          </div>
+
+
+          <div class="section-group">
+            <div class="section-title">Pulmonar</div>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="permanência prolongada em pé (aproximadamente mais de 30 minutos consecutivos)">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Permanência prolongada em pé (aproximadamente mais de 30 minutos consecutivos).</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="caminhar com frequência (aproximadamente mais de 30 minutos consecutivos)">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Caminhar com frequência (aproximadamente mais de 30 minutos consecutivos).</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="transporte manual de cargas (peso aproximadamente maior do que 5kg)">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Transporte manual de cargas (peso aproximadamente maior do que 5kg).</span>
+            </label>
+            <hr class="separator">
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="permanência prolongada na posição sentada">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Permanência prolongada na posição sentada.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="caminhar com frequência">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Caminhar com frequência.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="transporte manual de cargas">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Transporte manual de cargas.</span>
+            </label>
+            <hr class="separator">
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="contato com inalantes, produtos químicos, tóxicos e agentes biológicos">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Contato com inalantes, produtos químicos, tóxicos e agentes biológicos.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="esforços físicos intensos">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Esforços físicos intensos.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="uso constante de escadas">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Uso constante de escadas.</span>
+            </label>
+          </div>
+
+          
+
+          <div class="section-group">
+            <div class="section-title">Voz</div>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="uso constante e obrigatório da voz">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Uso constante e obrigatório da voz.</span>
+            </label>
+          </div>
+
+         
+
+          <div class="section-group">
+            <div class="section-title">Visual</div>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="boa visão">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Boa visão.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="presença de visão binocular">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Presença de visão binocular.</span>
+            </label>
+          </div>
+
+          <div class="section-group">
+            <div class="section-title">Auditivo e Vestibular</div>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="boa audição">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Boa audição.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="permanência em local ruidoso">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Permanência em local ruidoso.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="trabalho em altura">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Trabalho em altura.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="mudanças bruscas e constantes de posição corporal">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Mudanças bruscas e constantes de posição corporal.</span>
+            </label>
+          </div>
+
+          <div class="section-group">
+            <div class="section-title">Urinário</div>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="uso constante e obrigatório de força e de esforços vigorosos">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Uso constante e obrigatório de força e de esforços vigorosos.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="tarefa com impedimento para realização de pausas">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Tarefa com impedimento para realização de pausas.</span>
+            </label>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="movimento de agachamento (urinário)">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Movimento de agachamento.</span>
+            </label>
+          </div>
+
+ <div class="section-group">
+            <div class="section-title">Ambiente</div>
+            <label class="check-item" onclick="toggleCheck(this)">
+              <input type="checkbox" name="restricao" value="trabalhos em ambientes externos">
+              <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="check-label">Trabalhos em ambientes externos.</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COLUNA 2: RECOMENDAÇÕES + PERIODICIDADE -->
+  <div style="display: flex; flex-direction: column; gap: 24px;">
+
+    <!-- RECOMENDAÇÕES -->
+    <div class="panel">
+      <div class="panel-header blue">
+        <div class="step-badge">2</div>
+        Selecione as RECOMENDAÇÕES <small>(opcional)</small>
+      </div>
+      <div class="panel-body">
+
+        <div class="section-group">
+          <div class="section-title">Gerais</div>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="recomendacao" value="Local de melhor acessibilidade">
+            <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="check-label">Local de melhor acessibilidade.</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="recomendacao" value="Procurar estabelecer e de alternância das posturas em pé e sentada durante a jornada de trabalho">
+            <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="check-label">Procurar estabelecer e de alternância das posturas em pé e sentada durante a jornada de trabalho.</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="recomendacao" value="Verificar a possibilidade do uso de corrimão durante a subida ou descida de degraus">
+            <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="check-label">Verificar a possibilidade do uso de corrimão durante a subida ou descida de degraus.</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="recomendacao" value="Em casos em que a movimentação repetitiva faça parte da rotina de trabalho, considerar a implementação de micropausas">
+            <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="check-label">Em casos em que a movimentação repetitiva faça parte da rotina de trabalho, considerar a implementação de micropausas.</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="recomendacao" value="Dar preferência à tarefa que permita a realização de pausas durante a jornada de trabalho">
+            <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="check-label">Dar preferência à tarefa que permita a realização de pausas durante a jornada de trabalho.</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="recomendacao" value="Caso haja elevador no local, priorizar o seu uso">
+            <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="check-label">Caso haja elevador no local, priorizar o seu uso.</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="recomendacao" value="Priorizar tarefa que seja realizada em ambiente calmo, em que não haja grande circulação de pessoas e alto nível de ruído">
+            <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="check-label">Priorizar tarefa que seja realizada em ambiente calmo, em que não haja grande circulação de pessoas e alto nível de ruído.</span>
+          </label>
+        </div>
+
+        <div class="section-group">
+          <div class="section-title">Saúde Mental</div>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="recomendacao" value="Destinar volume de atividades adequado à carga horária, de modo que seja possível exercê-las com flexibilidade e com realização de pequenas pausas ao longo do período de trabalho">
+            <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="check-label">Destinar volume de atividades adequado à carga horária, de modo que seja possível exercê-las com flexibilidade e com realização de pequenas pausas ao longo do período de trabalho.</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="recomendacao" value="Priorizar a realização de atividades em ambientes em que não haja presença de muitos estímulos externos, tais como circulação de pessoas e ruídos incômodos">
+            <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="check-label">Priorizar a realização de atividades em ambientes em que não haja presença de muitos estímulos externos, tais como circulação de pessoas e ruídos incômodos.</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="recomendacao" value="Que possa haver cooperação enter o servidor(a) readaptado(a) e os colegas de trabalho, de modo que ele(a) não se sinta isolado(a) de seus pares e possa construir relações significantes e rede de apoio">
+            <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="check-label">Que possa haver cooperação entre o servidor(a) readaptado(a) e os colegas de trabalho, de modo que ele(a) não se sinta isolado(a) de seus pares e possa construir relações significantes e rede de apoio.</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="recomendacao" value="Que haja tratamento igualitário por parte dos colegas e dos líderes nas relações de trabalho">
+            <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="check-label">Que haja tratamento igualitário por parte dos colegas e dos líderes nas relações de trabalho.</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="recomendacao" value="Oportunizar atividade que seja de interesse do servidor(a) e que esteja de acordo com suas habilidades">
+            <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="check-label">Oportunizar atividade que seja de interesse do servidor(a) e que esteja de acordo com suas habilidades.</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="recomendacao" value="Considerar o equilíbrio entre as capacidades do servidor(a) e as exigências da tarefa, fazendo com que esta esteja dentro das potencialidades e habilidades do indivíduo">
+            <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="check-label">Considerar o equilíbrio entre as capacidades do servidor(a) e as exigências da tarefa, fazendo com que esta esteja dentro das potencialidades e habilidades do indivíduo.</span>
+          </label>
+          <label class="check-item" onclick="toggleCheck(this)">
+            <input type="checkbox" name="recomendacao" value="Fica sugerida a mudança da unidade atual de trabalho (em casos de assédio ou violência)">
+            <div class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <span class="check-label">Fica sugerida a mudança da unidade atual de trabalho (em casos de assédio ou violência).</span>
+          </label>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PERIODICIDADE -->
+    <div class="panel">
+      <div class="panel-header amber">
+        <div class="step-badge">3</div>
+        Indique a PERIODICIDADE do acompanhamento médico <small>(obrigatório)</small>
+      </div>
+      <div class="panel-body">
+        <p style="font-size:0.8rem; color: var(--text-muted); margin-bottom: 12px; font-weight:500;">⚠️ Selecione apenas uma opção.</p>
+        <div class="radio-grid" id="periodicidadeGroup">
+          <label class="radio-item" onclick="selectRadio(this, '3')">
+            <input type="radio" name="periodicidade" value="3">
+            <div class="radio-dot"><div class="radio-dot-inner"></div></div>
+            <span class="radio-label">A cada 3 meses</span>
+          </label>
+          <label class="radio-item" onclick="selectRadio(this, '12')">
+            <input type="radio" name="periodicidade" value="12">
+            <div class="radio-dot"><div class="radio-dot-inner"></div></div>
+            <span class="radio-label">A cada 12 meses</span>
+          </label>
+          <label class="radio-item" onclick="selectRadio(this, '6')">
+            <input type="radio" name="periodicidade" value="6">
+            <div class="radio-dot"><div class="radio-dot-inner"></div></div>
+            <span class="radio-label">A cada 6 meses</span>
+          </label>
+          <label class="radio-item" onclick="selectRadio(this, 'ATDT')">
+            <input type="radio" name="periodicidade" value="ATDT">
+            <div class="radio-dot"><div class="radio-dot-inner"></div></div>
+            <span class="radio-label">AT/DT (Uso exclusivo – Dra. Margarida)</span>
+          </label>
+          <label class="radio-item" onclick="selectRadio(this, '9')">
+            <input type="radio" name="periodicidade" value="9">
+            <div class="radio-dot"><div class="radio-dot-inner"></div></div>
+            <span class="radio-label">A cada 9 meses</span>
+          </label>
+        </div>
+        <div class="notice">Lembrete: A periodicidade do tratamento não deve ser superior ao período de vigência do laudo.</div>
+      </div>
+    </div>
+
+    <!-- GENERATE BAR inline -->
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <button class="clear-btn" onclick="limparTudo()">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Limpar Formulário
+      </button>
+      <button class="generate-btn" onclick="gerarTexto()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 2l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Gerar Texto do Laudo
+      </button>
+    </div>
+
+    <!-- OUTPUT inline -->
+    <div class="output-panel">
+      <div class="output-header">
+        <div class="header-left">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="white" stroke-width="1.6"/><path d="M5 6h6M5 9h4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Texto Gerado do Laudo
+        </div>
+      </div>
+      <div class="output-body">
+        <div class="text-result empty" id="textResult">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="opacity:0.4"><path d="M10 4v8M10 14v2" stroke="#9c9388" stroke-width="1.8" stroke-linecap="round"/><circle cx="10" cy="10" r="8" stroke="#9c9388" stroke-width="1.5"/></svg>
+          Preencha os campos acima e clique em "Gerar Texto do Laudo" para visualizar o resultado aqui.
+        </div>
+        <div class="btn-row" id="actionBtns" style="display:none;">
+          <button class="btn btn-primary" onclick="copiarTexto()">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="4" y="4" width="8" height="8" rx="1.5" stroke="white" stroke-width="1.5"/><path d="M1 9V2a1 1 0 011-1h7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Copiar Texto
+          </button>
+          <button class="btn btn-secondary" onclick="limparTudo()">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 1l11 11M12 1L1 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Limpar Tudo
+          </button>
+        </div>
+        <div class="copy-feedback" id="copyFeedback">✓ Texto copiado para a área de transferência!</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+  function toggleCheck(label) {
+    const cb = label.querySelector('input[type="checkbox"]');
+    cb.checked = !cb.checked;
+    label.classList.toggle('checked', cb.checked);
+  }
+
+  function selectRadio(label, value) {
+    document.querySelectorAll('.radio-item').forEach(r => r.classList.remove('selected'));
+    document.querySelectorAll('input[name="periodicidade"]').forEach(r => r.checked = false);
+    label.classList.add('selected');
+    label.querySelector('input').checked = true;
+  }
+
+  function getChecked(name) {
+    return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(i => i.value);
+  }
+
+  function getPeriodicidade() {
+    const r = document.querySelector('input[name="periodicidade"]:checked');
+    return r ? r.value : null;
+  }
+
+  function gerarTexto() {
+    const restricoes = getChecked('restricao');
+    const recomendacoes = getChecked('recomendacao');
+    const periodicidade = getPeriodicidade();
+
+    if (restricoes.length === 0) {
+      alert('Por favor, selecione ao menos uma restrição.');
+      return;
+    }
+    if (!periodicidade) {
+      alert('Por favor, selecione a periodicidade do acompanhamento.');
+      return;
+    }
+
+    const restricoesTexto = restricoes.length > 1
+      ? restricoes.slice(0, -1).join(', ') + ' e ' + restricoes[restricoes.length - 1]
+      : restricoes[0];
+    let texto = '';
+
+    if (periodicidade === 'ATDT') {
+      texto = `exercendo tarefas laborais que, rotineiramente, NÃO impliquem na exposição e/ou na necessidade de: ${restricoesTexto}, de modo a promover a redução de agravos a sua saúde.`;
+    } else {
+      texto = `exercendo tarefas laborais que, rotineiramente, NÃO impliquem na exposição e/ou na necessidade de: ${restricoesTexto}, devendo apresentar documentos comprobatórios do acompanhamento de saúde, periodicamente, a cada ${periodicidade} meses.`;
+    }
+
+    if (recomendacoes.length > 0) {
+      // Lowercase tudo exceto a primeira letra da primeira recomendação
+      const recs = recomendacoes.map((r, i) => i === 0 ? r : r.charAt(0).toLowerCase() + r.slice(1));
+      const recomTexto = recs.join('; ');
+      texto += `\n\nRecomendações: ${recomTexto}.`;
+    }
+
+    const result = document.getElementById('textResult');
+    result.classList.remove('empty');
+    result.textContent = texto;
+    document.getElementById('actionBtns').style.display = 'flex';
+    document.getElementById('copyFeedback').classList.remove('show');
+
+    result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function copiarTexto() {
+    const text = document.getElementById('textResult').textContent;
+    if (!text || document.getElementById('textResult').classList.contains('empty')) return;
+    navigator.clipboard.writeText(text).then(() => {
+      const fb = document.getElementById('copyFeedback');
+      fb.classList.add('show');
+      setTimeout(() => fb.classList.remove('show'), 2500);
+    });
+  }
+
+  function limparTudo() {
+    document.querySelectorAll('.check-item').forEach(item => {
+      item.classList.remove('checked');
+      item.querySelector('input').checked = false;
+    });
+    document.querySelectorAll('.radio-item').forEach(item => {
+      item.classList.remove('selected');
+      item.querySelector('input').checked = false;
+    });
+    const result = document.getElementById('textResult');
+    result.classList.add('empty');
+    result.innerHTML = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="opacity:0.4"><path d="M10 4v8M10 14v2" stroke="#9c9388" stroke-width="1.8" stroke-linecap="round"/><circle cx="10" cy="10" r="8" stroke="#9c9388" stroke-width="1.5"/></svg> Preencha os campos acima e clique em "Gerar Texto do Laudo" para visualizar o resultado aqui.`;
+    document.getElementById('actionBtns').style.display = 'none';
+    document.getElementById('copyFeedback').classList.remove('show');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
